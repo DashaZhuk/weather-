@@ -1,0 +1,40 @@
+<div class="container">
+   <mat-card *ngIf="data">
+      <div class="one-day">
+         <div class="location">
+            <p class="city">City: {{data.city.name}}</p>
+            <p class="data">Date: {{data.list[0].dt_txt.slice(0, 10).replace("-"," ")}}</p>
+         </div>
+
+         <div class="temperature">
+            <img [src]="getUrlForImg(data.list[0].weather[0].icon)" alt="">
+            <p class="temp">{{getTempreture(data.list[0].main.temp)}} °C</p>
+         </div>
+
+         <div class="description">
+            <div class="info">
+               <p>{{'Wind:' + data.list[0].wind.gust + ' kph'}}</p>
+               <p>{{'Feels like:' + data.list[0].main.feels_like}}°C</p>
+               <p>{{'Pressure:' + data.list[0].main.pressure + ' mb'}}</p>
+            </div>
+         </div>
+      </div>
+      <div class="one-day-hours">
+      <div class="title">
+         <i><p>Wind</p></i>
+         <i><p>Real fell</p></i>
+         <i><p>Temp (°C)</p></i>
+      </div>
+   
+      <div class="findings" *ngFor="let item of list">
+         <b><p class="data-hour">{{item.dt_txt | date: "h:00"}}</p></b>
+         <img [src]="getUrlForImg(item.weather[0].icon)" alt="">
+         <p class="temp-hour">{{getTempreture(item.main.temp)}} °C</p>
+         <p class="feel-hour">{{item.main.feels_like}}°C</p>
+         <p class="wind-hour">{{item.wind.gust}}</p>
+      </div>
+      </div>
+   </mat-card>
+</div>
+
+<mat-spinner *ngIf="isWeatherLoading"></mat-spinner>

@@ -1,0 +1,19 @@
+<mat-card class="container" *ngIf="data">
+   <div class="week-weather">
+      <div class="title">
+         <i><p>Wind</p></i>
+         <i><p>Real fell</p></i>
+         <i><p>Temp (°C)</p></i>
+      </div>
+
+      <div *ngFor="let item of list" class="findings">
+        <b><p>{{getWeekDays(item.dt_txt)}}</p></b> 
+         <img [src]="getUrlForImg(data.list[0].weather[0].icon)" alt="">
+         <p>{{getTempreture(data.list[0].main.temp)}} °C</p>
+         <p>{{data.list[0].main.feels_like}}°C</p>
+         <p>{{data.list[0].wind.gust}}</p>
+      </div>
+   </div>
+</mat-card>
+
+<mat-spinner *ngIf="isWeatherLoading"></mat-spinner>

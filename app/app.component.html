@@ -1,0 +1,26 @@
+<p>
+   <mat-toolbar color="primary">
+   <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+   </button>
+   <span>Weather App</span>
+   <span class="example-spacer"></span>
+   </mat-toolbar>
+</p>
+<div class="container">
+   <mat-form-field class="example-full-width" appearance="fill">
+      <input [(ngModel)]="searchCity" matInput placeholder="Write the city" value="">
+   </mat-form-field>
+
+
+   <div class="btns">
+      <button mat-raised-button color="primary" [disabled]="!searchCity" (click)="getOneDayWeather()">Get One Day
+         Weather</button>
+      <button mat-stroked-button color="primary" [disabled]="!searchCity" (click)="getWeekWeather()">Get Week
+         Weather</button>
+   </div>
+</div>
+
+<app-one-day-weather [city]="city" *ngIf="oneDayWeather"></app-one-day-weather>
+<app-week-weather [city]="city" *ngIf="weakWeather"></app-week-weather>
+
+<button mat-stroked-button color="primary" (click)="getMapWeather()">Get Weather Map</button>

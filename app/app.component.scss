@@ -1,0 +1,23 @@
+.container{
+   width: 100vw;
+   margin:0 auto;
+   display: flex;
+   justify-content: space-around;
+   align-items: center;
+
+   mat-form-field {
+      width: 80%;
+      margin: 20px  auto;
+      padding: 10px 40px;
+   }
+   .btns{
+      display: flex;
+      align-items: center;
+
+      button{
+         width: 210px;
+         height: 40px;
+         margin:20px 10px;
+      }
+   }
+}
